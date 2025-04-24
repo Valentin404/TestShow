@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Прогрессивная форма</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        border: none;
+      }
+      body {
+        height: 100vh;
+        background-color: rgba(5, 5, 5, 0.975);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .cont {
+        width: calc(100% - 50px);
+        height: calc(100% - 50px);
+        padding: 10px;
+        background: rgb(18, 18, 18);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        overflow-y: auto;
+      }
+      .selectCity {
+        font-size: 20px;
+        border: 1px solid white;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.577);
+        color: white;
+        border-radius: 5px;
+      }
+      .hidden {
+        display: none;
+      }
+      #s5 p {
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+        <select class="selectCity" id="s1">
+            <option hidden>Выбери</option>
+            <option>Kiev</option>
+            <option>Region</option>
+        </select>
+        <select class="selectCity hidden" id="s2">
+            <option hidden>Выбери точку</option>
+            <option>Point 1</option>
+            <option>Point 2</option>
+            <option>Point 3</option>
+            <option>Point 4</option>
+            <option>Point 5</option>
+            <option>Point 6</option>
+            <option>Point 7</option>
+        </select>
+       <input class="selectCity hidden" id="s3" placeholder="Напиши телефон"/>
+       <button id="s4" class="hidden selectCity">Плучить информацию</button>
+       <div id="s5" class="hidden">
+        <p>Price : 1000</p>
+        <p>Время 2 дня</p>
+        <p> Еясть в таких магазинах как ( поставщик 1 поставщи2 поставщи3 ) </p>
+       </div>
+    </div>
+    <script>
+        const s1 = document.getElementById('s1')
+        const s2 = document.getElementById('s2')
+        const s3 = document.getElementById('s3')
+        const s4 = document.getElementById('s4')
+        const s5 = document.getElementById('s5')
+
+        s1.onchange = () => s2.classList.remove('hidden');
+        s2.onchange = () => s3.classList.remove('hidden');
+        s3.oninput = () => s3.value.trim() === '' ? s4.classList.add('hidden') : s4.classList.remove('hidden');
+        s4.onclick = () => s5.classList.remove('hidden');
+
+    </script>
+  </body>
+</html>
